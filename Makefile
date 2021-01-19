@@ -6,8 +6,14 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/01/18 15:26:46 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/19 16:38:07 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+NAME	= libftprintf.a
+CC	= gcc
+CFLAGS	= -Wall -Wextra -Werror
 
+
+LIB_DIR	= ./libft
+SRC	= 

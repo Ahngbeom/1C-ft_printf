@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/12/21 15:37:47 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/19 16:12:05 by bahn             ###   ########.fr       */
+/*   Created: 2021/01/19 15:29:04 by bahn              #+#    #+#             */
+/*   Updated: 2021/01/19 15:31:48 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int count;
+#include "libft.h"
 
-	count = 0;
-	while (*(str++) != '\0')
-		count++;
-	return (count);
+void	ft_putnbr_unsigned(unsigned int n)
+{
+	char c;
+
+	c = '0';
+	if (n / 10 > 0)
+		ft_putnbr_fd(n / 10, 1);
+	ft_putchar_fd(c + (n % 10), 1);
 }
