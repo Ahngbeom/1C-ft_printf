@@ -6,11 +6,11 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:29:04 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/19 15:31:48 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/21 16:24:21 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libft/libft.h"
 
 void	ft_putnbr_unsigned(unsigned int n)
 {

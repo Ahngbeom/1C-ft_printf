@@ -6,37 +6,39 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/01/19 17:54:53 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/21 21:35:05 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
 CC		= gcc
 CFLAGS		= -Wall -Wextra -Werror
-INCFLAGS	= -I ./libft -I ./includes
+INCFLAGS	= -I.
 
 AR		= ar crs
 RM		= rm -rf
 
 LIB_DIR		= ./libft
 
-SRC_DIR		= ./src
+SRC_DIR		= ./
 SRC_FILES	= ft_printf.c \
-		  ft_printf_utils.c
-SRCS		= $(addprefix $(SRC_DIR)/, $(SRC_FILES))
+		  ft_printf_utils.c \
+		  ft_printf_utils2.c \
+		  ft_putnbr_base.c \
+		  ft_putnbr_unsigned.c
+SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
-OBJ_DIR		= ./obj
-OBJ_FILES	= $(SRC_FILES:.c=.o)
-OBJS		= $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
+OBJ_DIR		= ./
+OBJS		= $(SRCS:.c=.o)
+
+.c.o		: $(SRCS)
+	$(CC) $(CFLAGS) -c -o $@ $< $(INCFLAGS)
 
 $(NAME) 	: $(OBJS)
-	$(MAKE) -C $(LIB_DIR)
-	$(MAKE) -C $(LIB_DIR) bonus
+	$(MAKE) all -C $(LIB_DIR)
+	#$(MAKE) -C $(LIB_DIR) bonus
 	cp $(LIB_DIR)/libft.a $@
 	$(AR) $@ $^
-
-$(OBJS)		: $(SRCS)
-	$(CC) $(CFLAGS) $(INCFLAGS) -c -o $@ $<
 
 all		: $(NAME)
 
