@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/23 16:45:42 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/23 17:19:18 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ size_t	find_format(char fmt, va_list ap)
 	else if (fmt == 'p')
 		print_len = pointer_format(ap);
 	else if (fmt == 'u' || fmt == 'x' || fmt == 'X')
-		unsigned_format(fmt, ap);
+		print_len = unsigned_format(fmt, ap);
 	else if (fmt == '%')
 		print_len = ft_putchar_fd(fmt, 1);
 	return (print_len);

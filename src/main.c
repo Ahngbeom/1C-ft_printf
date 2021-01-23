@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/23 17:18:39 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/23 17:20:07 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,12 +40,12 @@ int	main()
 	printf("(return : %d)\n", ft_printf("%d", 12345));
 	printf("(return : %d)\n", printf("%i", 67890));
 	printf("(return : %d)\n", ft_printf("%i", 67890));
-	printf("(return : %d)\n", printf("%u", 1234));
-	printf("(return : %d)\n", ft_printf("%u", 1234));
-	printf("(return : %d)\n", printf("%x", 128));
-	printf("(return : %d)\n", ft_printf("%x", 128));
-	printf("(return : %d)\n", printf("%X", 128));
-	printf("(return : %d)\n", ft_printf("%X", 128));
+	printf("(return : %d)\n", printf("%u", -1234));
+	printf("(return : %d)\n", ft_printf("%u", -1234));
+	printf("(return : %d)\n", printf("%x", 255));
+	printf("(return : %d)\n", ft_printf("%x", 255));
+	printf("(return : %d)\n", printf("%X", 255));
+	printf("(return : %d)\n", ft_printf("%X", 255));
 	printf("(return : %d)\n", printf("%%"));
 	printf("(return : %d)\n", ft_printf("%%"));
 
