@@ -6,40 +6,55 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:16:30 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/21 16:11:53 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/23 16:54:09 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	char_format(va_list ap)
+size_t	char_format(va_list ap)
 {
 	char	ch;
 
 	ch = va_arg(ap, int);
-	ft_putchar_fd(ch, 1);
+	return (ft_putchar_fd(ch, 1));
 }
 
-void	str_format(va_list ap)
+size_t	str_format(va_list ap)
 {
 	char	*str;
 
 	str = va_arg(ap, char *);
-	ft_putstr_fd(str, 1);
+	return (ft_putstr_fd(str, 1));
 }
 
-void	int_format(va_list ap)
+size_t	int_format(va_list ap)
 {
 	int	num;
 
 	num = va_arg(ap, int);
-	ft_putnbr_fd(num, 1);
+	return (ft_putnbr_fd(num, 1));
 }
 
-void	double_format(va_list ap)
+size_t	pointer_format(va_list ap)
 {
-	int	num;
+	long long       addr;
 
-	num = va_arg(ap, int);
-	ft_putnbr_fd(num, 1);
+	addr = va_arg(ap, long long);
+	return (ft_putstr_fd("0x", 1) + ft_putnbr_base(addr, "0123456789abcdef"));
+}
+
+size_t    unsigned_format(char fmt, va_list ap)
+{
+	unsigned int    num;
+
+	num = va_arg(ap, unsigned int);
+	if (fmt == 'u')
+		return (ft_putnbr_unsigned(num));
+	else if (fmt == 'x')
+		return (ft_putnbr_base(num, "0123456789abcdef"));
+	else if (fmt == 'X')
+		return (ft_putnbr_base(num, "0123456789ABCDEF"));
+	else
+		return (-1);
 }

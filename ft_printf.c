@@ -6,30 +6,29 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/21 16:05:18 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/23 16:45:42 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	find_format(char fmt, va_list ap)
+size_t	find_format(char fmt, va_list ap)
 {
+	size_t	print_len;
+
 	if (fmt == 'c')
-		char_format(ap);
+		print_len = char_format(ap);
 	else if (fmt == 's')
-		str_format(ap);
-	else if (fmt == 'd')
-		double_format(ap);
-	else if (fmt == 'i')
-		int_format(ap);
+		print_len = str_format(ap);
+	else if (fmt == 'i' || fmt == 'd')
+		print_len = int_format(ap);
 	else if (fmt == 'p')
-		pointer_format(ap);
-	else if (fmt == 'u')
-		uint_format(ap);
-	else if (fmt == 'x')
-		uhexal_format(ap);
-	else if (fmt == 'X')
-		uhexau_format(ap);
+		print_len = pointer_format(ap);
+	else if (fmt == 'u' || fmt == 'x' || fmt == 'X')
+		unsigned_format(fmt, ap);
+	else if (fmt == '%')
+		print_len = ft_putchar_fd(fmt, 1);
+	return (print_len);
 }
 
 int	ft_printf(const char *str, ...)
@@ -42,11 +41,10 @@ int	ft_printf(const char *str, ...)
 	while (*str != '\0')
 	{
 		if (*str != '%')
-			ft_putchar_fd(*str, 1);
+			rtn += ft_putchar_fd(*str, 1);
 		else
-			find_format(*(++str), ap);
+			rtn += find_format(*(++str), ap);
 		str++;
-		rtn++;
 	}
 	va_end(ap);
 	return (rtn);

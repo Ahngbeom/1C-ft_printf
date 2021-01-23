@@ -6,15 +6,15 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:23:07 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/02 13:52:24 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/23 17:03:29 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+size_t	ft_putchar_fd(char c, int fd)
 {
 	if (fd < 0)
-		return ;
-	write(fd, &c, 1);
+		return (-1);
+	return (write(fd, &c, 1));
 }

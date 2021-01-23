@@ -6,30 +6,31 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:59:00 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/04 14:22:06 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/23 15:59:00 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+size_t	ft_putnbr_fd(int n, int fd)
 {
-	char c;
+	size_t print_len;
 
-	c = '0';
+	print_len = 0;
 	if (fd < 0)
-		return ;
+		return (-1);
 	if (n >= 0)
 	{
 		if (n / 10 > 0)
-			ft_putnbr_fd(n / 10, fd);
-		ft_putchar_fd(c + (n % 10), fd);
+			print_len += ft_putnbr_fd(n / 10, fd);
+		print_len += ft_putchar_fd('0' + (n % 10), fd);
 	}
 	else
 	{
-		ft_putchar_fd('-', fd);
+		print_len += ft_putchar_fd('-', fd);
 		if ((n / 10) * -1 > 0)
-			ft_putnbr_fd((n / 10) * -1, fd);
-		ft_putchar_fd(c + ((n % 10) * -1), fd);
+			print_len += ft_putnbr_fd((n / 10) * -1, fd);
+		print_len += ft_putchar_fd('0' + ((n % 10) * -1), fd);
 	}
+	return (print_len);
 }

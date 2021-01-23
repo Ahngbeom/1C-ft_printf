@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 15:27:23 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/23 16:54:06 by bahn             ###   ########.fr       */
+/*   Created: 2021/01/19 15:29:04 by bahn              #+#    #+#             */
+/*   Updated: 2021/01/23 17:17:22 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FT_PRINTF_H
-# define FT_PRINTF_H
+#include "libft.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdarg.h>
-# include "./libft/libft.h"
+#include <stdio.h>
+size_t	ft_putnbr_unsigned(unsigned int n)
+{
+	size_t	print_len;
 
-int	ft_printf(const char *str, ...);
-
-size_t	char_format(va_list ap);
-size_t	str_format(va_list ap);
-size_t	int_format(va_list ap);
-size_t	pointer_format(va_list ap);
-size_t	unsigned_format(char fmt, va_list ap);
-
-#endif
+	print_len = 0;
+	if (n / 10 > 0)
+	{
+		print_len += ft_putnbr_fd(n / 10, 1);
+	}
+	print_len += ft_putchar_fd('0' + (n % 10), 1);
+	printf("%ld\n", print_len);
+	return (print_len);
+}
