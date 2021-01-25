@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/25 22:35:50 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/25 23:26:23 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ size_t  data_type(char type, va_list ap, int size, char pdg)
 
 	if (type == 'c')
 		return (char_format(ap, size, pdg));
-		//return (ft_putchar_fd(va_arg(ap, int), 1));
 	else if (type == 's')
 		print_len = str_format(ap);
 	else if (type == 'i' || type == 'd')
-		print_len = int_format(ap);
+		return (int_format(ap, size, pdg));
+		//print_len = int_format(ap);
 	else if (type == 'p')
 		print_len = pointer_format(ap);
 	else if (type == 'u' || type == 'x' || type == 'X')
