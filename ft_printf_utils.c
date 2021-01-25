@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:16:30 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/25 22:41:53 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/25 22:59:48 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,25 @@ size_t	char_format(va_list ap, int size, char pdg)
 	size_t	print_len;
 	char	*str;
 
-	str = calloc(sizeof(char), size);
-	ft_memset(str, pdg, size);
-	*str = va_arg(ap, int);
-	print_len = ft_putstr_fd(str, 1);
-	free(str);
+	if (size > 0)
+	{
+		str = calloc(sizeof(char), size);
+		ft_memset(str, pdg, size);
+		str[size - 1] = va_arg(ap, int);
+		print_len = ft_putstr_fd(str, 1);
+		free(str);
+	}
+	else if (size < 0)
+	{
+		str = calloc(sizeof(char), ft_absolute(size));
+		ft_memset(str, pdg, size);
+		*str = va_arg(ap, int);
+		print_len = ft_putstr_fd(str, 1);
+		free(str);
+	}
+	else
+		print_len = ft_putchar_fd(va_arg(ap, int), 1);
+
 	return (print_len);
 }
 

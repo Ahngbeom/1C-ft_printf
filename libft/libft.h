@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 20:51:15 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/25 15:31:08 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/25 22:53:50 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
+size_t				ft_absolute(int n);
 int					ft_strlen(char *str);
 size_t				ft_strlcpy(char *dest, char *src, size_t size);
 size_t				ft_strlcat(char *dest, char *src, size_t size);
