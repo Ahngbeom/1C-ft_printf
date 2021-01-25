@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/23 17:20:07 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/25 20:08:42 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,13 @@
 
 int	main()
 {
-	//char	str[5] = "abcde";
-	//char	*ptr;
-
-	//ptr = str;
 
 	printf("\n===================파라미터 옵션 테스트========================\n");
-	printf("(return : %d)\n", printf("1 : %d, 2 : %c ", -123, 'b'));
-	printf("(return : %d)\n", ft_printf("1 : %d, 2 : %c ", -123, 'b'));
+	printf("(return : %d)\n", printf("1 : %-5d, 2 : %5c ", -123, 'b'));
+	printf("(return : %d)\n", ft_printf("1 : %-5d, 2 : %5c ", -123, 'b'));
 
-
+/*
 	printf("\n===================데이터 타입 테스트========================\n");
-	
 	printf("(return : %d)\n", printf("Only text"));
 	printf("(return : %d)\n", ft_printf("Only text"));
 	printf("(return : %d)\n", printf("%c", 'A'));
@@ -48,6 +43,6 @@ int	main()
 	printf("(return : %d)\n", ft_printf("%X", 255));
 	printf("(return : %d)\n", printf("%%"));
 	printf("(return : %d)\n", ft_printf("%%"));
-
+*/
 	return (0);
 }

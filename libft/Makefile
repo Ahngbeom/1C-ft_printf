@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2021/01/23 17:25:39 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/25 15:29:35 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ FILES		=	ft_strlen \
 				ft_strlcpy \
 				ft_strlcat \
 				ft_strchr \
+				ft_strchr_set \
 				ft_strrchr \
 				ft_strnstr \
 				ft_strncmp \

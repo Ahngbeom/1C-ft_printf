@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:27:23 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/23 16:54:06 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/25 19:58:41 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,7 @@ size_t	str_format(va_list ap);
 size_t	int_format(va_list ap);
 size_t	pointer_format(va_list ap);
 size_t	unsigned_format(char fmt, va_list ap);
+size_t	data_type(char type, va_list ap);
+size_t	width_sort(char *fmt, va_list ap);
 
 #endif

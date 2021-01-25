@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/01/23 17:24:41 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/23 19:06:03 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ LIB_DIR		= ./libft
 
 SRC_DIR		= ./
 SRC_FILES	= ft_printf.c \
-		  ft_printf_utils.c \
+		  ft_printf_utils.c
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR		= ./
