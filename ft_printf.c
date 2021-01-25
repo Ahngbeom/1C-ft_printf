@@ -6,18 +6,19 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/25 21:13:42 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/25 22:35:50 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t  data_type(char type, va_list ap)
+size_t  data_type(char type, va_list ap, int size, char pdg)
 {
 	size_t  print_len;
 
 	if (type == 'c')
-		print_len = char_format(ap);
+		return (char_format(ap, size, pdg));
+		//return (ft_putchar_fd(va_arg(ap, int), 1));
 	else if (type == 's')
 		print_len = str_format(ap);
 	else if (type == 'i' || type == 'd')
@@ -42,7 +43,7 @@ size_t	find_format(char *fmt, va_list ap)
 		//ptr = width_sort(ptr, ap);
 		return (width_sort(ptr, ap));
 	else
-		return (data_type(*ptr, ap));
+		return (data_type(*ptr, ap, 0, '\0'));
 
 	//return (data_type(*ptr, ap));
 }

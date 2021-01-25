@@ -6,18 +6,23 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:16:30 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/25 20:58:05 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/25 22:41:53 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t	char_format(va_list ap)
+size_t	char_format(va_list ap, int size, char pdg)
 {
-	char	ch;
+	size_t	print_len;
+	char	*str;
 
-	ch = va_arg(ap, int);
-	return (ft_putchar_fd(ch, 1));
+	str = calloc(sizeof(char), size);
+	ft_memset(str, pdg, size);
+	*str = va_arg(ap, int);
+	print_len = ft_putstr_fd(str, 1);
+	free(str);
+	return (print_len);
 }
 
 size_t	str_format(va_list ap)
