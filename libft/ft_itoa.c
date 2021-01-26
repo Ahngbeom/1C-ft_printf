@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/29 17:49:43 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/04 14:42:03 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/26 17:03:40 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static	void	ft_putnbr(char *ptr, long long nb, size_t len)
 	*ptr = '\0';
 }
 
-char			*ft_itoa(int n)
+char			*ft_itoa(long long n)
 {
 	char		*nbr;
 	size_t		len;

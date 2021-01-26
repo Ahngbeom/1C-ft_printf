@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/25 23:26:23 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/26 16:33:24 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ size_t  data_type(char type, va_list ap, int size, char pdg)
 	if (type == 'c')
 		return (char_format(ap, size, pdg));
 	else if (type == 's')
-		print_len = str_format(ap);
+		return (str_format(ap, size, pdg));
 	else if (type == 'i' || type == 'd')
 		return (int_format(ap, size, pdg));
-		//print_len = int_format(ap);
 	else if (type == 'p')
-		print_len = pointer_format(ap);
+		return (pointer_format(ap, size, pdg));
 	else if (type == 'u' || type == 'x' || type == 'X')
 		print_len = unsigned_format(type, ap);
 	else if (type == '%')
@@ -37,15 +36,10 @@ size_t	find_format(char *fmt, va_list ap)
 	char	*ptr;
 
 	ptr = fmt;
-
-
 	if (*ptr == '-' || (*ptr >= '1' && *ptr <= '9'))
-		//ptr = width_sort(ptr, ap);
 		return (width_sort(ptr, ap));
 	else
 		return (data_type(*ptr, ap, 0, '\0'));
-
-	//return (data_type(*ptr, ap));
 }
 
 int	ft_printf(const char *str, ...)
