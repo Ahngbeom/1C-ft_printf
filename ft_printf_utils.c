@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:16:30 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/26 17:22:58 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/28 01:14:42 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,12 @@ size_t	str_format(va_list ap, int size, char pdg)
 		if (size < 0)
 		{
 			ft_strlcat(str, padding, ft_absolute(size) + 1);
-			free(padding);
 			print_len = ft_putstr_fd(str, 1);
 			free(str);
 		}
 		else if (size > 0)
 		{
 			ft_strlcat(padding, str, ft_absolute(size) + 1);
-			free(str);
 			print_len = ft_putstr_fd(padding, 1);
 			free(padding);
 		}
@@ -78,14 +76,12 @@ size_t	int_format(va_list ap, int size, char pdg)
 		if (size < 0)
 		{
 			ft_strlcat(str, padding, ft_absolute(size) + 1);
-			free(padding);
 			print_len = ft_putstr_fd(str, 1);
 			free(str);
 		}
 		else if (size > 0)
 		{
 			ft_strlcat(padding, str, ft_absolute(size) + 1);
-			free(str);
 			print_len = ft_putstr_fd(padding, 1);
 			free(padding);
 		}
@@ -97,41 +93,34 @@ size_t	int_format(va_list ap, int size, char pdg)
 
 size_t	pointer_format(va_list ap, int size, char pdg)
 {
-	
-	//long long       addr;
-
-	//return (ft_putstr_fd("0x", 1) + ft_putnbr_base(addr, "0123456789abcdef"));
-
 	size_t	print_len;
-	char	*str;
+	char	*addr;
+	char	*hex;
 	char	*padding;
 
-	//addr = va_arg(ap, long long);
-	
+	addr = ft_strdup("0x");
+	hex = ft_tobase_n(va_arg(ap, long long), "0123456789abcdef");
+	ft_strlcat(addr, hex, ft_strlen(addr) + ft_strlen(hex) + 1);
 	if (size != 0)
 	{
-		str = ft_itoa(va_arg(ap, long long));
-		padding = ft_calloc(sizeof(char), ft_absolute(size) - ft_strlen(str) + 1);
-		ft_memset(padding, pdg, ft_absolute(size) - ft_strlen(str));
+		padding = ft_calloc(sizeof(char), ft_absolute(size) - ft_strlen(addr) + 1);
+		ft_memset(padding, pdg, ft_absolute(size) - ft_strlen(addr));
 		if (size < 0)
 		{
-			ft_strlcat(str, padding, ft_absolute(size) + 1);
-			free(padding);
-			print_len = ft_putstr_fd(str, 1);
-			free(str);
+			ft_strlcat(addr, padding, ft_absolute(size) + 1);
+			print_len = ft_putstr_fd(addr, 1);
+			free(addr);
 		}
 		else if (size > 0)
 		{
-			ft_strlcat(padding, str, ft_absolute(size) + 1);
-			free(str);
+			ft_strlcat(padding, addr, ft_absolute(size) + 1);
 			print_len = ft_putstr_fd(padding, 1);
 			free(padding);
 		}
 	}
 	else
-		print_len = ft_putnbr_fd(va_arg(ap, int), 1);
+		print_len = ft_putstr_fd(addr, 1);
 	return (print_len);
-	
 }
 
 size_t	unsigned_format(char fmt, va_list ap)

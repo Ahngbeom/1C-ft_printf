@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:42:03 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/02 22:35:02 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/28 00:11:12 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ size_t	ft_strlcat(char *dest, char *src, size_t size)
 		i++;
 	}
 	dest[i] = '\0';
+	free(src);
 	return (dest_len + ft_strlen(src));
 }

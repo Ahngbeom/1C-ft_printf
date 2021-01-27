@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/26 17:56:55 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/28 01:16:34 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,20 @@ int	main()
 {
 	char	*str;
 
-	str = ft_strdup("Pointer Memory Address Test");
+	str = ft_strdup("String");
 	
 	printf("\n===================파라미터 옵션 테스트========================\n");
-	printf(" - (return : %d)\n", printf("   print : |%5c|, |%-5c|", 'b', 'b'));
-	printf(" - (return : %d)\n", ft_printf("ft_print : |%5c|, |%-5c|", 'b', 'b'));
-	printf(" - (return : %d)\n", printf("   print : |%10s|, |%-10s|", "abcde", "abcde"));
-	printf(" - (return : %d)\n", ft_printf("ft_print : |%10s|, |%-10s|", "abcde", "abcde"));
-	printf(" - (return : %d)\n", printf("   print : |%5d|, |%-5d|", -123, -123));
-	printf(" - (return : %d)\n", ft_printf("ft_print : |%5d|, |%-5d|", -123, -123));
-	printf(" - (return : %d)\n", printf("   print : |%20p|, |%-20p|", str, str));
-	printf(" - (return : %d)\n", ft_printf("ft_print : |%20p|, |%-20p|", str, str));
+	printf(" - (return : %d)\n", printf("   print : |%c|, |%5c|, |%-5c|", 'b', 'b', 'b'));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%c|, |%5c|, |%-5c|", 'b', 'b', 'b'));
+	printf(" - (return : %d)\n", printf("   print : |%s|, |%10s|, |%-10s|", str, str, str));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%s|, |%10s|, |%-10s|", str, str, str));
+	printf(" - (return : %d)\n", printf("   print : |%d|, |%5d|, |%-5d|", -123, -123, -123));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%d|, |%5d|, |%-5d|", -123, -123, -123));
+	printf(" - (return : %d)\n", printf("   print : |%p|, |%20p|, |%-20p|", str, str, str));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%p|, |%20p|, |%-20p|", str, str, str));
 
 	free(str);
 
-	printf("%c\n", 's');
 /*
 	printf("\n===================데이터 타입 테스트========================\n");
 	printf("(return : %d)\n", printf("Only text"));
