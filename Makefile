@@ -6,13 +6,13 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/01/23 19:06:03 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/28 21:20:29 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
 CC		= gcc
-CFLAGS		= -Wall -Wextra -Werror
+CFLAGS		= -Wall -Wextra -Werror -g
 INCFLAGS	= -I.
 
 AR		= ar crs
@@ -22,7 +22,9 @@ LIB_DIR		= ./libft
 
 SRC_DIR		= ./
 SRC_FILES	= ft_printf.c \
-		  ft_printf_utils.c
+		  ft_printf_utils.c \
+		  ft_type_format1.c \
+		  ft_type_format2.c
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR		= ./

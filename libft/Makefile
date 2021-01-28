@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2021/01/25 15:29:35 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/28 20:21:45 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,6 @@ FILES		=	ft_strlen \
 				ft_strlcpy \
 				ft_strlcat \
 				ft_strchr \
-				ft_strchr_set \
 				ft_strrchr \
 				ft_strnstr \
 				ft_strncmp \
@@ -45,8 +44,11 @@ FILES		=	ft_strlen \
 				ft_putstr_fd \
 				ft_putendl_fd \
 				ft_putnbr_fd \
+				ft_absolute \
+				ft_strchr_set \
 				ft_putnbr_base \
-				ft_putnbr_unsigned
+				ft_putnbr_unsigned \
+				ft_tobase_n \
 
 FILES_BONUS	= 	ft_lstnew \
 				ft_lstadd_front \
