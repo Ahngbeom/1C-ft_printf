@@ -6,15 +6,15 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/26 16:33:24 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/28 20:07:08 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t  data_type(char type, va_list ap, int size, char pdg)
+static	size_t	data_type(char type, va_list ap, int size, char pdg)
 {
-	size_t  print_len;
+	size_t	print_len;
 
 	if (type == 'c')
 		return (char_format(ap, size, pdg));
@@ -24,28 +24,31 @@ size_t  data_type(char type, va_list ap, int size, char pdg)
 		return (int_format(ap, size, pdg));
 	else if (type == 'p')
 		return (pointer_format(ap, size, pdg));
-	else if (type == 'u' || type == 'x' || type == 'X')
-		print_len = unsigned_format(type, ap);
+	else if (type == 'u')
+		return (uint_format(ap, size, pdg));
+	else if (type == 'x' || type == 'X')
+		return (uhex_format(type, ap, size, pdg));
 	else if (type == '%')
 		print_len = ft_putchar_fd(type, 1);
 	return (print_len);
 }
 
-size_t	find_format(char *fmt, va_list ap)
+static	size_t	find_format(char *fmt, va_list ap)
 {
 	char	*ptr;
 
 	ptr = fmt;
 	if (*ptr == '-' || (*ptr >= '1' && *ptr <= '9'))
-		return (width_sort(ptr, ap));
+		return (data_type(*(ft_strchr_set(fmt, "csidpuxX%")),
+					ap, ft_atoi(fmt), ' '));
 	else
 		return (data_type(*ptr, ap, 0, '\0'));
 }
 
-int	ft_printf(const char *str, ...)
+int			ft_printf(const char *str, ...)
 {
-	int	rtn;
-	va_list ap;
+	int		rtn;
+	va_list		ap;
 
 	rtn = 0;
 	va_start(ap, str);

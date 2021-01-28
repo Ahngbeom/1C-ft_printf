@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/28 01:16:34 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/28 18:48:15 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,13 @@ int	main()
 	printf(" - (return : %d)\n", ft_printf("ft_print : |%d|, |%5d|, |%-5d|", -123, -123, -123));
 	printf(" - (return : %d)\n", printf("   print : |%p|, |%20p|, |%-20p|", str, str, str));
 	printf(" - (return : %d)\n", ft_printf("ft_print : |%p|, |%20p|, |%-20p|", str, str, str));
+	printf(" - (return : %d)\n", printf("   print : |%u|, |%20u|, |%-20u|", -5000, -5000, -5000));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%u|, |%20u|, |%-20u|", -5000, -5000, -5000));
+	printf(" - (return : %d)\n", printf("   print : |%x|, |%20x|, |%-20x|", -5000, -5000, -5000));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%x|, |%20x|, |%-20x|", -5000, -5000, -5000));
+	printf(" - (return : %d)\n", printf("   print : |%X|, |%20X|, |%-20X|", -5000, -5000, -5000));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%X|, |%20X|, |%-20X|", -5000, -5000, -5000));
+
 
 	free(str);
 
