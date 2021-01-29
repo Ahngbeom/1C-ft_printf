@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 20:51:15 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/27 12:43:12 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/29 17:15:24 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-size_t				ft_absolute(int n);
-int					ft_strlen(char *str);
+size_t				ft_abs(int n);
+int					ft_strlen(char const *str);
 size_t				ft_strlcpy(char *dest, char *src, size_t size);
 size_t				ft_strlcat(char *dest, char *src, size_t size);
 char				*ft_strchr(char *str, int c);
@@ -49,7 +49,7 @@ int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(char *src);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
-char				*ft_strjoin(char const *s1, char const *s2);
+char				*ft_strjoin(char *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 char				**ft_split(char const *s, char c);
 char				*ft_itoa(long long n);

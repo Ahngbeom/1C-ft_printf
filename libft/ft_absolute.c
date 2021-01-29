@@ -6,13 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/25 22:52:38 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/25 23:00:25 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/29 16:21:04 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_absolute(int	n)
+size_t	ft_abs(int n)
 {
 	if (n < 0)
 		return (n * -1);

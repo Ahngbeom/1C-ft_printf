@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/12/21 15:47:18 by bahn              #+#    #+#              #
-#    Updated: 2021/01/28 20:21:45 by bahn             ###   ########.fr        #
+#    Updated: 2021/01/29 16:21:14 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ FILES		=	ft_strlen \
 				ft_putstr_fd \
 				ft_putendl_fd \
 				ft_putnbr_fd \
-				ft_absolute \
+				ft_abs \
 				ft_strchr_set \
 				ft_putnbr_base \
 				ft_putnbr_unsigned \

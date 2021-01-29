@@ -6,16 +6,16 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:37:47 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/19 16:12:05 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/29 17:15:02 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+int	ft_strlen(char const *str)
 {
 	int count;
 
 	count = 0;
-	while (*(str++) != '\0')
+	while (str[count] != '\0')
 		count++;
 	return (count);
 }

@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:27:23 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/28 20:11:42 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/29 16:17:27 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,6 @@ size_t	pointer_format(va_list ap, int size, char pdg);
 size_t	uint_format(va_list ap, int size, char pdg);
 size_t	uhex_format(char type, va_list ap, int size, char pdg);
 size_t	set_padding(char *str, int size, char pdg);
+//size_t	set_padding(int size, char pdg);
 
 #endif

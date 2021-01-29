@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:00:24 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/28 20:03:15 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/29 20:43:13 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ size_t	char_format(va_list ap, int size, char pdg)
 
 	if (size != 0)
 	{
-		str = ft_calloc(sizeof(char), ft_absolute(size) + 1);
-		ft_memset(str, pdg, ft_absolute(size));
+		str = ft_calloc(sizeof(char), ft_abs(size) + 1);
+		ft_memset(str, pdg, ft_abs(size));
 		if (size < 0)
 			*str = va_arg(ap, int);
 		if (size > 0)
@@ -36,12 +36,21 @@ size_t	char_format(va_list ap, int size, char pdg)
 size_t	str_format(va_list ap, int size, char pdg)
 {
 	size_t	print_len;
-	char	*str;
+	char	*arg;
+	char	*padding;
+	char	*result;
 
 	if (size != 0)
 	{
-		str = ft_strdup(va_arg(ap, char *));
-		print_len = set_padding(str, size, pdg);
+		arg = ft_strdup(va_arg(ap, char *));
+		padding = ft_calloc(sizeof(char), ft_abs(size) - ft_strlen(arg) + 1);
+		ft_memset(padding, pdg, ft_abs(size) - ft_strlen(arg));
+		if (size < 0)
+			result = ft_strjoin(arg, padding);
+		else
+			result = ft_strjoin(padding, arg);
+		print_len = ft_putstr_fd(result, 1);
+		free(result);
 	}
 	else
 		print_len = ft_putstr_fd(va_arg(ap, char *), 1);
@@ -51,12 +60,21 @@ size_t	str_format(va_list ap, int size, char pdg)
 size_t	int_format(va_list ap, int size, char pdg)
 {
 	size_t	print_len;
-	char	*str;
+	char	*arg;
+	char	*padding;
+	char	*result;
 
 	if (size != 0)
 	{
-		str = ft_itoa(va_arg(ap, int));
-		print_len = set_padding(str, size, pdg);
+		arg = ft_itoa(va_arg(ap, int));
+		padding = ft_calloc(sizeof(char), ft_abs(size) - ft_strlen(arg) + 1);
+		ft_memset(padding, pdg, ft_abs(size) - ft_strlen(arg));
+		if (size < 0)
+			result = ft_strjoin(arg, padding);
+		else
+			result = ft_strjoin(padding, arg);
+		print_len = ft_putstr_fd(result, 1);
+		free(result);
 	}
 	else
 		print_len = ft_putnbr_fd(va_arg(ap, int), 1);
