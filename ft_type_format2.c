@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:00:24 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/29 21:04:27 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/30 20:33:03 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,13 @@
 size_t	pointer_format(va_list ap, int size, char pdg)
 {
 	size_t	print_len;
-	char	*hexsign;
-	char	*hex;
 	char	*addr;
 	char	*padding;
 	char	*result;
 	
-
-	hexsign = ft_strdup("0x");
-	hex = ft_tobase_n(va_arg(ap, long long), "0123456789abcdef");
-	//ft_strlcat(addr, hex, ft_strlen(addr) + ft_strlen(hex) + 1);
-	//addr = ft_strjoin("0x", ft_tobase_n(va_arg(ap, long long), "0123456789abcdef"));
-	addr = ft_strjoin(hexsign, hex);
+	addr = ft_strjoin(ft_strdup("0x"), ft_tobase_n(va_arg(ap, long long), "0123456789abcdef"));
 	if (size != 0)
 	{
-		//print_len = set_padding(addr, size, pdg);
 		padding = ft_calloc(sizeof(char), ft_abs(size) - ft_strlen(addr) + 1);
 		ft_memset(padding, pdg, ft_abs(size) - ft_strlen(addr));
 		if (size < 0)
@@ -50,12 +42,21 @@ size_t	pointer_format(va_list ap, int size, char pdg)
 size_t	uint_format(va_list ap, int size, char pdg)
 {
 	size_t	print_len;
-	char	*str;
+	char	*arg;
+	char	*padding;
+	char	*result;
 
 	if (size != 0)
 	{
-		str = ft_itoa(va_arg(ap, unsigned int));
-		print_len = set_padding(str, size, pdg);
+		arg = ft_itoa(va_arg(ap, unsigned int));
+		padding = ft_calloc(sizeof(char), ft_abs(size) - ft_strlen(arg) + 1);
+		ft_memset(padding, pdg, ft_abs(size) - ft_strlen(arg));
+		if (size < 0)
+			result = ft_strjoin(arg, padding);
+		else
+			result = ft_strjoin(padding, arg);
+		print_len = ft_putstr_fd(result, 1);
+		free(result);
 	}
 	else
 		print_len = ft_putnbr_unsigned(va_arg(ap, unsigned int));
@@ -65,18 +66,29 @@ size_t	uint_format(va_list ap, int size, char pdg)
 size_t	uhex_format(char type, va_list ap, int size, char pdg)
 {
 	size_t	print_len;
-	char	*str;
+	char	*arg;
+	char	*padding;
+	char	*result;
 
 	if (type == 'x')
-		str = ft_tobase_n(va_arg(ap, unsigned int), "0123456789abcdef");
+		arg = ft_tobase_n(va_arg(ap, unsigned int), "0123456789abcdef");
 	else if (type == 'X')
-		str = ft_tobase_n(va_arg(ap, unsigned int), "0123456789ABCDEF");
+		arg = ft_tobase_n(va_arg(ap, unsigned int), "0123456789ABCDEF");
 	if (size != 0)
-		print_len = set_padding(str, size, pdg);
+	{
+		padding = ft_calloc(sizeof(char), ft_abs(size) - ft_strlen(arg) + 1);
+		ft_memset(padding, pdg, ft_abs(size) - ft_strlen(arg));
+		if (size < 0)
+			result = ft_strjoin(arg, padding);
+		else
+			result = ft_strjoin(padding, arg);
+		print_len = ft_putstr_fd(result, 1);
+		free(result);
+	}
 	else
 	{
-		print_len = ft_putstr_fd(str, 1);
-		free(str);
+		print_len = ft_putstr_fd(arg, 1);
+		free(arg);
 	}
 	return (print_len);
 }

@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 20:51:15 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/29 17:15:24 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/30 19:18:28 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
 
 typedef struct		s_list
 {

@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:54:12 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/29 21:42:29 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/30 19:31:24 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,19 @@ static  int     ft_dupl_check(char *str, int length)
 
 static	char	*ft_putnbr(long long nbr, char *base, int base_count, char *result)
 {
+	char	*hex;
+
 	if (nbr >= 0)
 	{
 		if (nbr / base_count < base_count)
-			ft_strlcat(result, ft_substr(base, nbr / base_count, 1), ft_strlen(result) + 2);
+		{
+			hex = ft_substr(base, nbr / base_count, 1);
+			result = ft_strjoin(result, hex);
+		}
 		else
-			ft_putnbr(nbr / base_count, base, base_count, result);
-		ft_strlcat(result, ft_substr(base, nbr % base_count, 1), ft_strlen(result) + 2);
+			result = ft_putnbr(nbr / base_count, base, base_count, result);
+		hex = ft_substr(base, nbr % base_count, 1);
+		result = ft_strjoin(result, hex);
 	}
 	return (result);
 }
@@ -68,7 +74,7 @@ char	*ft_tobase_n(long long n, char *base)
 	else
 	{
 		result = ft_calloc(sizeof(char), 1);	
-		ft_putnbr(n, base, base_count, result);
+		result = ft_putnbr(n, base, base_count, result);
 	}
 	return (result);
 }
