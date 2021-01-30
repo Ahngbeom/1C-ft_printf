@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/28 20:07:08 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/31 03:41:54 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ static	size_t	find_format(char *fmt, va_list ap)
 	if (*ptr == '-' || (*ptr >= '1' && *ptr <= '9'))
 		return (data_type(*(ft_strchr_set(fmt, "csidpuxX%")),
 					ap, ft_atoi(fmt), ' '));
+	else if (*ptr == '0' || (*ptr >= '1' && *ptr <= '9'))
+		return (data_type(*(ft_strchr_set(fmt, "csidpuxX%")),
+					ap, ft_atoi(fmt), '0'));
 	else
 		return (data_type(*ptr, ap, 0, '\0'));
 }

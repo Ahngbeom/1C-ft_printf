@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:00:24 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/29 20:43:13 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/31 04:16:44 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ size_t	str_format(va_list ap, int size, char pdg)
 	char	*padding;
 	char	*result;
 
-	if (size != 0)
+	arg = ft_strdup(va_arg(ap, char *));
+	if (size != 0 && ft_strlen(arg) < ft_abs(size))
 	{
-		arg = ft_strdup(va_arg(ap, char *));
 		padding = ft_calloc(sizeof(char), ft_abs(size) - ft_strlen(arg) + 1);
 		ft_memset(padding, pdg, ft_abs(size) - ft_strlen(arg));
 		if (size < 0)
@@ -53,7 +53,10 @@ size_t	str_format(va_list ap, int size, char pdg)
 		free(result);
 	}
 	else
-		print_len = ft_putstr_fd(va_arg(ap, char *), 1);
+	{
+		print_len = ft_putstr_fd(arg, 1);
+		free(arg);
+	}
 	return (print_len);
 }
 
@@ -64,9 +67,9 @@ size_t	int_format(va_list ap, int size, char pdg)
 	char	*padding;
 	char	*result;
 
-	if (size != 0)
+	arg = ft_itoa(va_arg(ap, int));
+	if (size != 0 && ft_strlen(arg) < ft_abs(size))
 	{
-		arg = ft_itoa(va_arg(ap, int));
 		padding = ft_calloc(sizeof(char), ft_abs(size) - ft_strlen(arg) + 1);
 		ft_memset(padding, pdg, ft_abs(size) - ft_strlen(arg));
 		if (size < 0)
@@ -77,6 +80,9 @@ size_t	int_format(va_list ap, int size, char pdg)
 		free(result);
 	}
 	else
-		print_len = ft_putnbr_fd(va_arg(ap, int), 1);
+	{
+		print_len = ft_putstr_fd(arg, 1);
+		free(arg);
+	}
 	return (print_len);
 }

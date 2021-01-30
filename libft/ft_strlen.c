@@ -6,11 +6,13 @@
 /*   By: bahn <bahn@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/21 15:37:47 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/29 17:15:02 by bahn             ###   ########.fr       */
+/*   Updated: 2021/01/31 04:11:03 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char const *str)
+#include "libft.h"
+
+size_t	ft_strlen(char const *str)
 {
 	int count;
 
