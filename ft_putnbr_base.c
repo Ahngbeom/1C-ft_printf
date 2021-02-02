@@ -6,11 +6,11 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:03:47 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/27 23:20:33 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/01 20:39:23 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
 static	int	ft_dupl_check(char *str, int length)
 {

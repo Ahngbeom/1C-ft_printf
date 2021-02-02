@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
+/*   ft_strchr_set.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/19 15:29:04 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/23 17:19:46 by bahn             ###   ########.fr       */
+/*   Created: 2021/01/25 15:23:44 by bahn              #+#    #+#             */
+/*   Updated: 2021/02/01 20:40:00 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_putnbr_unsigned(unsigned int n)
+char	*ft_strchr_set(char *str, char *set)
 {
-	size_t	print_len;
+	int	i;
+	int	j;
 
-	print_len = 0;
-	if (n / 10 > 0)
-		print_len += ft_putnbr_fd(n / 10, 1);
-	print_len += ft_putchar_fd('0' + (n % 10), 1);
-	return (print_len);
+	i = 0;
+	while (str[i] != '\0')
+	{
+		j = 0;
+		while (set[j] != '\0')
+		{
+			if (str[i] == set[j])
+				return (&str[i]);
+			else
+				j++;
+		}
+		i++;
+	}
+	if (str[i] == set[j])
+		return (&str[i]);
+	return (0);
 }

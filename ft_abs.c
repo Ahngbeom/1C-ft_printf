@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr_set.c                                    :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/25 15:23:44 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/25 15:45:03 by bahn             ###   ########.fr       */
+/*   Created: 2021/01/30 20:35:32 by bahn              #+#    #+#             */
+/*   Updated: 2021/02/01 20:37:17 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
-char	*ft_strchr_set(char *str, char *set)
-{
-	int	i;
-	int	j;
+#include "ft_printf.h"
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		j = 0;
-		while (set[j] != '\0')
-		{
-			if (str[i] == set[j])
-				return (&str[i]);
-			else
-				j++;
-		}
-		i++;
-	}
-	if (str[i] == set[j])
-		return (&str[i]);
-	return (0);
+size_t	ft_abs(int n)
+{
+	if (n < 0)
+		return (n * -1);
+	else
+		return (n);
 }

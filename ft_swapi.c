@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_abs.c                                           :+:      :+:    :+:   */
+/*   ft_swapi.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/30 20:35:32 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/30 20:35:39 by bahn             ###   ########.fr       */
+/*   Created: 2021/02/01 16:38:11 by bahn              #+#    #+#             */
+/*   Updated: 2021/02/01 20:40:12 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "ft_printf.h"
 
-size_t	ft_abs(int n)
+void	ft_swapi(char *idx1, char *idx2)
 {
-	if (n < 0)
-		return (n * -1);
-	else
-		return (n);
+	char	temp;
+
+	temp = *idx1;
+	*idx1 = *idx2;
+	*idx2 = temp;
 }

@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:27:23 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/29 16:17:27 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/02 18:15:33 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,33 @@
 # include <stdarg.h>
 # include "./libft/libft.h"
 
+# define DTYPE "csdiupxX%"
+
+typedef struct	s_opt
+{
+	size_t	minus;
+	size_t	zero;
+	int	width;
+	int	prec;
+	char	type;
+}		t_opt;
+
 int	ft_printf(const char *str, ...);
 
-size_t	char_format(va_list ap, int size, char pdg);
-size_t	str_format(va_list ap, int size, char pdg);
-size_t	int_format(va_list ap, int size, char pdg);
-size_t	pointer_format(va_list ap, int size, char pdg);
-size_t	uint_format(va_list ap, int size, char pdg);
-size_t	uhex_format(char type, va_list ap, int size, char pdg);
-size_t	set_padding(char *str, int size, char pdg);
-//size_t	set_padding(int size, char pdg);
+size_t	char_format(int ch, t_opt *opt);
+size_t	str_format(char	*str, t_opt *opt);
+size_t	int_format(int n, t_opt *opt);
+size_t	pointer_format(long long n, t_opt *opt);
+size_t	uint_format(unsigned int n, t_opt *opt);
+
+char	*set_padding(size_t zr_flg, size_t size);
+char	*set_sorting(size_t mns_flg, char *arg, char *padding);
+
+size_t	ft_abs(int n);
+size_t	ft_putnbr_base(long long nbr, char *base);
+size_t	ft_putnbr_unsigned(unsigned int	n);
+char	*ft_strchr_set(char *str, char *set);
+void	ft_swapi(char *idx1, char *idx2);
+char	*ft_tobase_n(long long n, char *base);
 
 #endif

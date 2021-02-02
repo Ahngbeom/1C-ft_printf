@@ -6,46 +6,84 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/31 03:41:54 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/02 19:15:36 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	size_t	data_type(char type, va_list ap, int size, char pdg)
+static	size_t	data_type(va_list ap, t_opt *opt)
 {
 	size_t	print_len;
 
-	if (type == 'c')
-		return (char_format(ap, size, pdg));
-	else if (type == 's')
-		return (str_format(ap, size, pdg));
-	else if (type == 'i' || type == 'd')
-		return (int_format(ap, size, pdg));
-	else if (type == 'p')
-		return (pointer_format(ap, size, pdg));
-	else if (type == 'u')
-		return (uint_format(ap, size, pdg));
-	else if (type == 'x' || type == 'X')
-		return (uhex_format(type, ap, size, pdg));
-	else if (type == '%')
-		print_len = ft_putchar_fd(type, 1);
+	if (opt->type == 'c')
+		return (char_format(va_arg(ap, int), opt));
+	else if (opt->type == 's')
+		return (str_format(va_arg(ap, char*), opt));
+	else if (opt->type == 'i' || opt->type == 'd')
+		return (int_format(va_arg(ap, int), opt));
+	else if (opt->type == 'p')
+		return (pointer_format(va_arg(ap, long long), opt));
+	else if (opt->type == 'u' || opt->type == 'x' || opt->type == 'X')
+		return (uint_format(va_arg(ap, unsigned int), opt));
+	else if (opt->type == '%')
+		print_len = ft_putchar_fd(opt->type, 1);
 	return (print_len);
 }
 
 static	size_t	find_format(char *fmt, va_list ap)
 {
-	char	*ptr;
+	size_t	print_len;
+	int	i;
+	t_opt	*opt;
 
-	ptr = fmt;
-	if (*ptr == '-' || (*ptr >= '1' && *ptr <= '9'))
-		return (data_type(*(ft_strchr_set(fmt, "csidpuxX%")),
-					ap, ft_atoi(fmt), ' '));
-	else if (*ptr == '0' || (*ptr >= '1' && *ptr <= '9'))
-		return (data_type(*(ft_strchr_set(fmt, "csidpuxX%")),
-					ap, ft_atoi(fmt), '0'));
-	else
-		return (data_type(*ptr, ap, 0, '\0'));
+	i = 0;
+	if (!(opt = malloc(sizeof(t_opt))))
+		return (-1);
+	ft_memset(opt, 0, sizeof(t_opt));
+	opt->prec = -1;
+	while (!ft_strchr(DTYPE, fmt[i]))
+	{
+		if (fmt[i] == '-')
+			opt->minus = 1;
+		else if (fmt[i] == '0' && opt->width == 0 && opt->prec == -1)
+			opt->zero = 1;
+		else if (fmt[i] == '.')
+			opt->prec = 0;
+		else if (ft_isdigit(fmt[i]) || fmt[i] == '*')
+		{
+			if (ft_isdigit(fmt[i]))
+			{
+				if (opt->prec == -1)
+					opt->width = opt->width * 10 + fmt[i] - 48;
+				else
+					opt->prec = opt->prec * 10 + fmt[i] - 48;
+			}
+			else if (fmt[i] == '*')
+			{
+				if (opt->prec == -1)
+				{
+					if ((opt->width = va_arg(ap, int)) < 0)
+					{
+						opt->minus = 1;
+						opt->width *= -1;
+						opt->zero = 0;
+					}
+				}
+				else
+				{
+					opt->prec = va_arg(ap, int);
+				}
+			}
+		}
+		i++;
+	}
+	opt->type = fmt[i];
+	//if ((opt->minus == 1 || opt->prec > -1) && opt->type != '%')
+	//	opt->zero = 0;
+	print_len = data_type(ap, opt);
+	free(opt);
+	return (print_len);
 }
 
 int			ft_printf(const char *str, ...)
@@ -65,7 +103,7 @@ int			ft_printf(const char *str, ...)
 		else
 		{
 			rtn += find_format((char *)++str, ap);
-			str = ft_strchr_set((char *)str, "csidpuxX%") + 1;
+			str = ft_strchr_set((char *)str, DTYPE) + 1;
 		}
 	}
 	va_end(ap);

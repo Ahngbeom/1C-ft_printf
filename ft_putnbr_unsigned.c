@@ -1,33 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_utils.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/18 18:16:30 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/02 16:16:41 by bahn             ###   ########.fr       */
+/*   Created: 2021/01/19 15:29:04 by bahn              #+#    #+#             */
+/*   Updated: 2021/02/01 20:39:38 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*set_padding(size_t zr_flg, size_t size)
+size_t	ft_putnbr_unsigned(unsigned int n)
 {
-	char	*padding;
+	size_t	print_len;
 
-	padding = ft_calloc(sizeof(char), size + 1);
-	if (zr_flg == 0)
-		ft_memset(padding, ' ', size);
-	else
-		ft_memset(padding, '0', size);
-	return (padding);
-}
-
-char	*set_sorting(size_t mns_flg, char *arg, char *padding)
-{
-	if(mns_flg == 0)
-		return (ft_strjoin(padding, arg));
-	else
-		return (ft_strjoin(arg, padding));
+	print_len = 0;
+	if (n / 10 > 0)
+		print_len += ft_putnbr_fd(n / 10, 1);
+	print_len += ft_putchar_fd('0' + (n % 10), 1);
+	return (print_len);
 }
