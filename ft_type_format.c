@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:00:24 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/03 20:04:43 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/03 20:50:57 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ size_t	str_format(char *str, t_opt *opt)
 	}
 	return (print_len);
 }
-
+/*
 size_t	int_format(int n, t_opt *opt)
 {
 	size_t	print_len;
@@ -100,7 +100,7 @@ size_t	int_format(int n, t_opt *opt)
 	free(arg);
 	return (print_len);
 }
-
+*/
 size_t  pointer_format(long long n, t_opt *opt)
 {
 	size_t  print_len;
