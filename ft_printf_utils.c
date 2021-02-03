@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 18:16:30 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/02 16:16:41 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/03 19:52:16 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,18 @@ char	*set_padding(size_t zr_flg, size_t size)
 
 char	*set_sorting(size_t mns_flg, char *arg, char *padding)
 {
+	char	*result;
+
 	if(mns_flg == 0)
-		return (ft_strjoin(padding, arg));
+	{
+		result = ft_strjoin(padding, arg);
+		//free(arg);
+		return (result);
+	}
 	else
-		return (ft_strjoin(arg, padding));
+	{
+		result = ft_strjoin(arg, padding);
+		//free(padding);
+		return (result);
+	}
 }

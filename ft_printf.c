@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/02 19:15:36 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/03 20:29:00 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,36 @@ static	size_t	data_type(va_list ap, t_opt *opt)
 	return (print_len);
 }
 
+static	void	set_width_or_prec(va_list ap, t_opt *opt, char ch)
+{
+	if (ft_isdigit(ch))
+	{
+		if (opt->prec == -1)
+			opt->width = opt->width * 10 + ch - 48;
+		else
+			opt->prec = opt->prec * 10 + ch - 48;
+	}
+	else if (ch == '*')
+	{
+		if (opt->prec == -1)
+		{
+			if ((opt->width = va_arg(ap, int)) < 0)
+			{
+				opt->minus = 1;
+				opt->width *= -1;
+				opt->zero = 0;
+			}
+		}
+		else
+		{
+			if ((opt->prec = va_arg(ap, int)) < 0)
+				opt->prec = -1;
+			else
+				opt->zero = 0;
+		}
+	}
+}
+
 static	size_t	find_format(char *fmt, va_list ap)
 {
 	size_t	print_len;
@@ -51,36 +81,10 @@ static	size_t	find_format(char *fmt, va_list ap)
 		else if (fmt[i] == '.')
 			opt->prec = 0;
 		else if (ft_isdigit(fmt[i]) || fmt[i] == '*')
-		{
-			if (ft_isdigit(fmt[i]))
-			{
-				if (opt->prec == -1)
-					opt->width = opt->width * 10 + fmt[i] - 48;
-				else
-					opt->prec = opt->prec * 10 + fmt[i] - 48;
-			}
-			else if (fmt[i] == '*')
-			{
-				if (opt->prec == -1)
-				{
-					if ((opt->width = va_arg(ap, int)) < 0)
-					{
-						opt->minus = 1;
-						opt->width *= -1;
-						opt->zero = 0;
-					}
-				}
-				else
-				{
-					opt->prec = va_arg(ap, int);
-				}
-			}
-		}
+			set_width_or_prec(ap, opt, fmt[i]);	
 		i++;
 	}
 	opt->type = fmt[i];
-	//if ((opt->minus == 1 || opt->prec > -1) && opt->type != '%')
-	//	opt->zero = 0;
 	print_len = data_type(ap, opt);
 	free(opt);
 	return (print_len);

@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/02 18:25:24 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/03 20:02:15 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@ int	main()
 	
 	//*
 	printf("\n===================[.] FLAG TEST=======================\n");
-	//printf(" - (return : %d)\n", printf("   print : |%-05d|, |%-5.10d|, |%d|, |%d| ", -123, -123, -123, -123));
-	printf(" - (return : %d)\n", ft_printf("   ft_print : |%0*d| ", 2, 0));
+	//printf(" - (return : %d)\n", printf("   print : |%0.d| ", 0));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%d| ", -4));
 	//printf(" - (return : %d)\n", printf("   print : |%u|, |%20u|, |%-20u|", -5000, -5000, -5000));
 	//printf(" - (return : %d)\n", ft_printf("ft_print : |%u|, |%20u|, |%-20u|", -5000, -5000, -5000));
 	//printf(" - (return : %d)\n", printf("   print : |%x|, |%20x|, |%-20x|", -5000, -5000, -5000));

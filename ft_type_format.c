@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:00:24 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/02 18:18:29 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/03 20:04:43 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,10 @@ size_t	str_format(char *str, t_opt *opt)
 	char	*padding;
 	char	*result;
 
-	arg = ft_strdup(str);
+	if (opt->prec > -1)
+		arg = ft_strdup("");
+	else
+		arg = ft_strdup(str);
 	if (opt->width > 0 && ft_strlen(arg) < (size_t)opt->width)
 	{
 		padding = set_padding(opt->zero, opt->width - ft_strlen(arg));
@@ -58,26 +61,43 @@ size_t	str_format(char *str, t_opt *opt)
 size_t	int_format(int n, t_opt *opt)
 {
 	size_t	print_len;
+	char	*sign;
 	char	*arg;
 	char	*padding;
-	char	*result;
 
+	print_len = 0;
+	sign = ft_strdup("");
 	if (opt->prec == 0 && n == 0)
 		arg = ft_strdup("");
+	else if (n < 0)
+	{
+		sign = ft_strjoin(sign, ft_strdup("-"));
+		print_len += ft_strlen(sign);
+		arg = ft_itoa((long long)n * -1);
+	}
 	else
 		arg = ft_itoa(n);
-	if (opt->width > 0 && ft_strlen(arg) < (size_t)opt->width)
+	print_len += ft_strlen(arg);
+	if (opt->prec > -1 && (size_t)opt->prec > ft_strlen(arg))
 	{
-		padding = set_padding(opt->zero, opt->width - ft_strlen(arg));
-		result = set_sorting(opt->minus, arg, padding);
-		print_len = ft_putstr_fd(result, 1);
-		free(result);
+		padding = set_padding(1, opt->prec - ft_strlen(arg));
+		print_len += ft_strlen(padding);
+		arg = set_sorting(0, arg, padding);
+	}
+	if (opt->width > 0 && (size_t)opt->width > print_len && opt->width > opt->prec)
+	{
+		padding = set_padding(opt->zero, opt->width - print_len);
+		print_len += ft_strlen(padding);
+		if (opt->zero > 0)
+			padding = ft_strjoin(sign, padding);
+		else
+			arg = ft_strjoin(sign, arg);
+		arg = set_sorting(opt->minus, arg, padding);
 	}
 	else
-	{
-		print_len = ft_putstr_fd(arg, 1);
-		free(arg);
-	}
+		arg = ft_strjoin(sign, arg);
+	ft_putstr_fd(arg, 1);
+	free(arg);
 	return (print_len);
 }
 
