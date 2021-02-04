@@ -6,13 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 20:50:07 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/04 18:50:08 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/04 22:59:00 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	char	*set_width(t_opt *opt, char *sign, char *arg)
+static	char	*applies_to_width(t_opt *opt, char *sign, char *arg)
 {
 	char	*padding;
 
@@ -33,7 +33,7 @@ static	char	*set_width(t_opt *opt, char *sign, char *arg)
 	return (arg);
 }
 
-static	char	*set_precision(int prec, char *arg)
+static	char	*applies_to_prec(int prec, char *arg)
 {
 	char	*padding;
 
@@ -61,8 +61,8 @@ size_t  int_format(int n, t_opt *opt)
 	}
 	else
 		arg = ft_itoa(n);
-	arg = set_precision(opt->prec, arg);
-	arg = set_width(opt, sign, arg);
+	arg = applies_to_prec(opt->prec, arg);
+	arg = applies_to_width(opt, sign, arg);
 	print_len = ft_putstr_fd(arg, 1);
 	free(arg);
 	return (print_len);
@@ -81,8 +81,8 @@ size_t  uint_format(unsigned int n, t_opt *opt)
 		arg = ft_tobase_n(n, "0123456789abcdef");
 	else if (opt->type == 'X')
 		arg = ft_tobase_n(n, "0123456789ABCDEF");
-	arg = set_precision(opt->prec, arg);
-	arg = set_width(opt, ft_strdup(""), arg);
+	arg = applies_to_prec(opt->prec, arg);
+	arg = applies_to_width(opt, ft_strdup(""), arg);
 	print_len = ft_putstr_fd(arg, 1);
 	free(arg);
 	return (print_len);
@@ -97,7 +97,7 @@ size_t  pointer_format(long long n, t_opt *opt)
 		addr = ft_strdup("(nil)");
 	else
 		addr = ft_strjoin(ft_strdup("0x"), ft_tobase_n(n, "0123456789abcdef"));
-	addr = set_width(opt, ft_strdup(""), addr);
+	addr = applies_to_width(opt, ft_strdup(""), addr);
 	print_len = ft_putstr_fd(addr, 1);
 	free(addr);
 	return (print_len);
