@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/03 21:27:25 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/04 16:48:45 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,17 @@ int	main()
 
 	str = ft_strdup("String");
 	
-	/*
+	
 	printf("\n===================[.] FLAG TEST=======================\n");
 	//printf(" - (return : %d)\n", printf("   print : |%0.d| ", 0));
-	//printf(" - (return : %d)\n", ft_printf("ft_print : |%d| ", -4));
-	//printf(" - (return : %d)\n", printf("   print : |%u|, |%20u|, |%-20u|", -5000, -5000, -5000));
-	//printf(" - (return : %d)\n", ft_printf("ft_print : |%u|, |%20u|, |%-20u|", -5000, -5000, -5000));
-	//printf(" - (return : %d)\n", printf("   print : |%x|, |%20x|, |%-20x|", -5000, -5000, -5000));
-	//printf(" - (return : %d)\n", ft_printf("ft_print : |%x|, |%20x|, |%-20x|", -5000, -5000, -5000));
-	//printf(" - (return : %d)\n", printf("   print : |%X|, |%20X|, |%-20X|", -5000, -5000, -5000));
-	//printf(" - (return : %d)\n", ft_printf("ft_print : |%X|, |%20X|, |%-20X|", -5000, -5000, -5000));
-	*/
+	printf(" - (return : %d)\n", printf("   print : |%c|, |%*c| ", -12, 12, -12));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%c|, |%*c| ", -12, 12, -12));
+	printf(" - (return : %d)\n", ft_printf("ft_print : |%-2.4s| ", NULL));
+	printf(" - (return : %d)\n", ft_printf("(null)"));
+	printf(" - (return : %d)\n", ft_printf(""));
+	
 
-//*
+/*
 	printf("\n===================[0] FLAG TEST=======================\n");
 	printf(" - (return : %d)\n", printf("   print : |%c|, |%5c|, |%5c|", 'b', 'b', 'b'));
 	printf(" - (return : %d)\n", ft_printf("ft_print : |%c|, |%05c|, |%05c|", 'b', 'b', 'b'));
@@ -66,7 +64,7 @@ int	main()
 	printf(" - (return : %d)\n", ft_printf("ft_print : |%x|, |%20x|, |%-20x|", -5000, -5000, -5000));
 	printf(" - (return : %d)\n", printf("   print : |%X|, |%20X|, |%-20X|", -5000, -5000, -5000));
 	printf(" - (return : %d)\n", ft_printf("ft_print : |%X|, |%20X|, |%-20X|", -5000, -5000, -5000));
-//*/
+*/
 
 	free(str);
 

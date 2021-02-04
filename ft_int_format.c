@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 20:50:07 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/03 21:22:38 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/04 18:50:08 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	char	*set_width(t_opt *opt, char *sign, char *arg)
 	char	*padding;
 
 	if (opt->width > 0 &&
-		(size_t)opt->width > (ft_strlen(sign) + ft_strlen(arg)) &&
+			(size_t)opt->width > (ft_strlen(sign) + ft_strlen(arg)) &&
 			opt->width > opt->prec)
 	{
 		padding = set_padding(opt->zero,
@@ -65,5 +65,40 @@ size_t  int_format(int n, t_opt *opt)
 	arg = set_width(opt, sign, arg);
 	print_len = ft_putstr_fd(arg, 1);
 	free(arg);
+	return (print_len);
+}
+
+size_t  uint_format(unsigned int n, t_opt *opt)
+{
+	size_t  print_len;
+	char    *arg;
+
+	if (opt->prec == 0 && n == 0)
+		arg = ft_strdup("");
+	else if (opt->type == 'u')
+		arg = ft_itoa(n);
+	else if (opt->type == 'x')
+		arg = ft_tobase_n(n, "0123456789abcdef");
+	else if (opt->type == 'X')
+		arg = ft_tobase_n(n, "0123456789ABCDEF");
+	arg = set_precision(opt->prec, arg);
+	arg = set_width(opt, ft_strdup(""), arg);
+	print_len = ft_putstr_fd(arg, 1);
+	free(arg);
+	return (print_len);
+}
+
+size_t  pointer_format(long long n, t_opt *opt)
+{
+	size_t  print_len;
+	char    *addr;
+
+	if (n == 0)
+		addr = ft_strdup("(nil)");
+	else
+		addr = ft_strjoin(ft_strdup("0x"), ft_tobase_n(n, "0123456789abcdef"));
+	addr = set_width(opt, ft_strdup(""), addr);
+	print_len = ft_putstr_fd(addr, 1);
+	free(addr);
 	return (print_len);
 }

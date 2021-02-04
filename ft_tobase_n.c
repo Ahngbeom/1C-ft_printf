@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:54:12 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/01 20:40:26 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/04 13:49:25 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,11 @@ static	char	*ft_putnbr(long long nbr, char *base, int base_count, char *result)
 	{
 		if (nbr / base_count < base_count)
 		{
-			hex = ft_substr(base, nbr / base_count, 1);
-			result = ft_strjoin(result, hex);
+			if (nbr / base_count != 0)
+			{
+				hex = ft_substr(base, nbr / base_count, 1);
+				result = ft_strjoin(result, hex);
+			}
 		}
 		else
 			result = ft_putnbr(nbr / base_count, base, base_count, result);
