@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_type_format.c                                   :+:      :+:    :+:   */
+/*   ft_char_format.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:00:24 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/04 18:50:22 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/04 22:46:36 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ size_t	str_format(char *str, t_opt *opt)
 	char	*padding;
 
 	if (str == NULL)
+	{
 		str = "(null)";
+		if (opt->prec != -1 && opt->prec < (int)ft_strlen(str))
+			str = "";
+	}
 	if (opt->prec > -1)
 		arg = ft_substr(str, 0, opt->prec);
 	else
