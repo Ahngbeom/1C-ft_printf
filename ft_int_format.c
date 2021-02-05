@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 20:50:07 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/05 21:32:16 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/05 23:40:57 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,8 @@ size_t  uint_format(unsigned int n, t_opt *opt)
 		arg = ft_tobase_n(n, "0123456789abcdef");
 	else if (opt->type == 'X')
 		arg = ft_tobase_n(n, "0123456789ABCDEF");
+	else
+		return (0);
 	arg = applies_to_prec(opt->prec, arg);
 	arg = applies_to_width(opt, ft_strdup(""), arg);
 	print_len = ft_putstr_fd(arg, 1);
