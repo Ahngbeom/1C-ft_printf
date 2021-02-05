@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/04 16:48:45 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/05 21:21:49 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,16 @@ int	main()
 	str = ft_strdup("String");
 	
 	
-	printf("\n===================[.] FLAG TEST=======================\n");
-	//printf(" - (return : %d)\n", printf("   print : |%0.d| ", 0));
-	printf(" - (return : %d)\n", printf("   print : |%c|, |%*c| ", -12, 12, -12));
-	printf(" - (return : %d)\n", ft_printf("ft_print : |%c|, |%*c| ", -12, 12, -12));
-	printf(" - (return : %d)\n", ft_printf("ft_print : |%-2.4s| ", NULL));
-	printf(" - (return : %d)\n", ft_printf("(null)"));
-	printf(" - (return : %d)\n", ft_printf(""));
+	printf("\n===================[Exception Handling] TEST=======================\n");
+	//printf(" - (return : %d)\n", printf("   print : |%| "));
+	printf(" - (return : %d)\n", ft_printf("%0*.*d", 2, -2, 0));
+	//printf(" - (return : %d)\n", printf("|%s|", "\x"));
+	//printf(" - (return : %d)\n", ft_printf("|%s|", "\x"));
+	//printf(" - (return : %d)\n", ft_printf("%"));
+	//printf(" - (return : %d)\n", ft_printf("ft_print : |%c|, |%*c| ", -12, 12, -12));
+	//printf(" - (return : %d)\n", ft_printf("ft_print : |%-2.4s| ", NULL));
+	//printf(" - (return : %d)\n", ft_printf("(null)"));
+	//printf(" - (return : %d)\n", ft_printf(""));
 	
 
 /*

@@ -6,16 +6,14 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/04 19:33:24 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/05 21:43:35 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	size_t	data_type(va_list ap, t_opt *opt)
+static	int	data_type(va_list ap, t_opt *opt)
 {
-	size_t	print_len;
-
 	if (opt->type == 'c')
 		return (char_format(va_arg(ap, int), opt));
 	else if (opt->type == 's')
@@ -27,8 +25,9 @@ static	size_t	data_type(va_list ap, t_opt *opt)
 	else if (opt->type == 'u' || opt->type == 'x' || opt->type == 'X')
 		return (uint_format(va_arg(ap, unsigned int), opt));
 	else if (opt->type == '%')
-		print_len = ft_putchar_fd(opt->type, 1);
-	return (print_len);
+		return (ft_putchar_fd(opt->type, 1));
+	else
+		return (-1);
 }
 
 static	void	set_width_or_prec(va_list ap, t_opt *opt, char ch)
@@ -57,13 +56,16 @@ static	void	set_width_or_prec(va_list ap, t_opt *opt, char ch)
 				opt->prec = -1;
 			else
 				opt->zero = 0;
+			
 		}
 	}
+	if (opt->prec > 0 && opt->zero > 0)
+		opt->zero = 0;
 }
 
-static	size_t	find_format(char *fmt, va_list ap)
+static	int	find_format(char *fmt, va_list ap)
 {
-	size_t	print_len;
+	int	print_len;
 	int	i;
 	t_opt	*opt;
 
@@ -72,7 +74,7 @@ static	size_t	find_format(char *fmt, va_list ap)
 		return (-1);
 	ft_memset(opt, 0, sizeof(t_opt));
 	opt->prec = -1;
-	while (!ft_strchr(DTYPE, fmt[i]))
+	while (!ft_strchr(DTYPE, fmt[i]) && fmt[i] != '\0')
 	{
 		if (fmt[i] == '-')
 		{
@@ -96,6 +98,7 @@ static	size_t	find_format(char *fmt, va_list ap)
 
 int			ft_printf(const char *str, ...)
 {
+	int		print_len;
 	int		rtn;
 	va_list		ap;
 
@@ -110,8 +113,12 @@ int			ft_printf(const char *str, ...)
 		}
 		else
 		{
-			rtn += find_format((char *)++str, ap);
-			str = ft_strchr_set((char *)str, DTYPE) + 1;
+			print_len = find_format((char *)++str, ap);
+			if (print_len >= 0)
+			{
+				rtn += print_len;
+				str = ft_strchr_set((char *)str, DTYPE) + 1;
+			}
 		}
 	}
 	va_end(ap);

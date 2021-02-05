@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/30 14:23:07 by bahn              #+#    #+#             */
-/*   Updated: 2021/01/23 17:04:51 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/05 20:59:50 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,6 @@ size_t	ft_putstr_fd(char *c, int fd)
 	if (fd < 0)
 		return (-1);
 	while (c && *c != '\0')
-	{
-		if (ft_isascii(*c))
-			print_len += write(fd, c++, 1);
-		else
-			return (-1);
-	}
+		print_len += write(fd, c++, 1);
 	return (print_len);
 }
