@@ -6,7 +6,11 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:00:24 by bahn              #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/02/08 14:52:03 by bahn             ###   ########.fr       */
+=======
+/*   Updated: 2021/02/08 14:41:06 by bahn             ###   ########.fr       */
+>>>>>>> f377fe6d714aeb20bb471a263690277c01c8cb48
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +48,8 @@ size_t	str_format(char *str, t_opt *opt)
 	if (str == NULL)
 	{
 		str = "(null)";
-		//if (opt->prec != -1 && opt->prec < (int)ft_strlen(str))
-		//	str = "";
+	//	if (opt->prec != -1 && opt->prec < (int)ft_strlen(str))
+	//		str = "";
 	}
 	if (opt->prec > -1)
 		arg = ft_substr(str, 0, opt->prec);
