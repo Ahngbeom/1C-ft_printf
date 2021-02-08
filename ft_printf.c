@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 15:53:46 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 16:09:29 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,9 @@ static	int	data_type(va_list ap, t_opt *opt)
 	else if (opt->type == 'u' || opt->type == 'x' || opt->type == 'X')
 		return (uint_format(va_arg(ap, unsigned int), opt));
 	else if (opt->type == '%')
-		return (ft_putchar_fd(opt->type, 1));
+		//return (ft_putchar_fd(opt->type, 1));
+		//return (percent_format(opt));
+		return (char_format(opt->type, opt));
 	else
 		return (-1);
 }

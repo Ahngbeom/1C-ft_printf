@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:27:23 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 15:16:34 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 17:24:26 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct	s_opt
 
 int	ft_printf(const char *str, ...);
 
+//size_t	percent_fotmat(t_opt *opt);
 size_t	char_format(int ch, t_opt *opt);
 size_t	str_format(char	*str, t_opt *opt);
 size_t	int_format(int n, t_opt *opt);
