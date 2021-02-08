@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/08 15:17:21 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 19:24:06 by bahn             ###   ########.fr       */
+/*   Created: 2021/02/08 19:32:15 by bahn              #+#    #+#             */
+/*   Updated: 2021/02/08 19:34:31 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ size_t	char_format(int ch, t_opt *opt)
 {
 	size_t	print_len;
 	char	*padding;
-/*
+//*
 	printf("\n%c", opt->type);
 	printf("\n%ld", opt->minus);
 	printf("\n%ld", opt->zero);
 	printf("\n%d", opt->width);
 	printf("\n%d\n", opt->prec);
-*/	
+//*/	
 	if (opt->width > 0)
 		padding = set_padding(opt->zero, (size_t)opt->width - sizeof(char));
 	else
@@ -74,7 +74,7 @@ size_t	str_format(char *str, t_opt *opt)
 		arg = ft_strdup(str);
 	if (opt->width > 0 && (size_t)opt->width > ft_strlen(arg))
 	{
-		padding = set_padding(0, opt->width - ft_strlen(arg));
+		padding = set_padding(opt->zero, opt->width - ft_strlen(arg));
 		arg = set_sorting(opt->minus, arg, padding);
 	}
 	print_len = ft_putstr_fd(arg, 1);
