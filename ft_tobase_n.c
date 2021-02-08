@@ -6,13 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:54:12 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/04 13:49:25 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 21:10:54 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static  int     ft_dupl_check(char *str, int length)
+static	int	ft_dupl_check(char *str, int length)
 {
 	int i;
 	int j;
@@ -33,7 +33,8 @@ static  int     ft_dupl_check(char *str, int length)
 	return (0);
 }
 
-static	char	*ft_putnbr(long long nbr, char *base, int base_count, char *result)
+static	char	*ft_putnbr(long long nbr, char *base,
+		int base_count, char *result)
 {
 	char	*hex;
 
@@ -55,9 +56,9 @@ static	char	*ft_putnbr(long long nbr, char *base, int base_count, char *result)
 	return (result);
 }
 
-char	*ft_tobase_n(long long n, char *base)
+char		*ft_tobase_n(long long n, char *base)
 {
-	char	*result;
+	char		*result;
 	int	base_count;
 
 	base_count = 0;
@@ -76,7 +77,7 @@ char	*ft_tobase_n(long long n, char *base)
 		return (NULL);
 	else
 	{
-		result = ft_calloc(sizeof(char), 1);	
+		result = ft_calloc(sizeof(char), 1);
 		result = ft_putnbr(n, base, base_count, result);
 	}
 	return (result);

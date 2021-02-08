@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:27:23 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 17:24:26 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 21:13:03 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,24 @@
 
 # define DTYPE "csdiupxX%"
 
-typedef struct	s_opt
+typedef struct		s_opt
 {
 	size_t	minus;
 	size_t	zero;
-	int	width;
-	int	prec;
+	int		width;
+	int		prec;
 	char	type;
-}		t_opt;
+}			t_opt;
 
 int	ft_printf(const char *str, ...);
 
-//size_t	percent_fotmat(t_opt *opt);
 size_t	char_format(int ch, t_opt *opt);
 size_t	str_format(char	*str, t_opt *opt);
 size_t	int_format(int n, t_opt *opt);
 size_t	pointer_format(long long n, t_opt *opt);
 size_t	uint_format(unsigned int n, t_opt *opt);
 
+t_opt	*init_opt(void);
 char	*set_padding(size_t zr_flg, size_t size);
 char	*set_sorting(size_t mns_flg, char *arg, char *padding);
 

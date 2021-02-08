@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 19:48:57 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 21:06:15 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,6 @@ static	int	data_type(va_list ap, t_opt *opt)
 	else if (opt->type == 'u' || opt->type == 'x' || opt->type == 'X')
 		return (uint_format(va_arg(ap, unsigned int), opt));
 	else if (opt->type == '%')
-		//return (ft_putchar_fd(opt->type, 1));
-		//return (percent_format(opt));
 		return (char_format(opt->type, opt));
 	else
 		return (-1);
@@ -56,8 +54,6 @@ static	void	set_width_or_prec(va_list ap, t_opt *opt, char ch)
 		{
 			if ((opt->prec = va_arg(ap, int)) < 0)
 				opt->prec = -1;
-			//else
-			//	opt->zero = 0;
 		}
 	}
 }
@@ -69,19 +65,14 @@ static	int	find_format(char *fmt, va_list ap)
 	t_opt	*opt;
 
 	i = 0;
-	if (!(opt = malloc(sizeof(t_opt))))
+	if (!(opt = init_opt()))
 		return (-1);
-	ft_memset(opt, 0, sizeof(t_opt));
-	opt->prec = -1;
 	while (!ft_strchr(DTYPE, fmt[i]) && fmt[i] != '\0')
 	{
 		if (fmt[i] == '-')
-		{
 			opt->minus = 1;
-			//if (opt->zero == 1)
-				//opt->zero = 0;
-		}
-		else if (fmt[i] == '0' && opt->width == 0 && opt->prec == -1 && opt->minus == 0)
+		else if (fmt[i] == '0' &&
+				opt->width == 0 && opt->prec == -1 && opt->minus == 0)
 			opt->zero = 1;
 		else if (fmt[i] == '.')
 			opt->prec = 0;
@@ -91,14 +82,13 @@ static	int	find_format(char *fmt, va_list ap)
 	}
 	opt->type = fmt[i];
 	if ((opt->prec >= 0 || opt->minus > 0) && opt->type != '%')
-	//if ((opt->prec >= 0 || opt->minus > 0))
 		opt->zero = 0;
 	print_len = data_type(ap, opt);
 	free(opt);
 	return (print_len);
 }
 
-int			ft_printf(const char *str, ...)
+int		ft_printf(const char *str, ...)
 {
 	int		print_len;
 	int		rtn;
