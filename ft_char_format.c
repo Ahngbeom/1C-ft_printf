@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/28 17:00:24 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/05 19:12:23 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 14:41:06 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,8 @@ size_t	str_format(char *str, t_opt *opt)
 	if (str == NULL)
 	{
 		str = "(null)";
-		if (opt->prec != -1 && opt->prec < (int)ft_strlen(str))
-			str = "";
+	//	if (opt->prec != -1 && opt->prec < (int)ft_strlen(str))
+	//		str = "";
 	}
 	if (opt->prec > -1)
 		arg = ft_substr(str, 0, opt->prec);
