@@ -6,17 +6,17 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 15:17:21 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 17:24:43 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 18:47:49 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*
-size_t	percent_format(t_opt *opt)
-{
-	//size_t	print_len;
-	return (0);
+   size_t	percent_format(t_opt *opt)
+   {
+//size_t	print_len;
+return (0);
 }
 */
 
@@ -24,7 +24,13 @@ size_t	char_format(int ch, t_opt *opt)
 {
 	size_t	print_len;
 	char	*padding;
-
+/*
+	printf("\n%c", opt->type);
+	printf("\n%ld", opt->minus);
+	printf("\n%ld", opt->zero);
+	printf("\n%d", opt->width);
+	printf("\n%d\n", opt->prec);
+*/	
 	if (opt->width > 0)
 		padding = set_padding(opt->zero, (size_t)opt->width - sizeof(char));
 	else
@@ -52,8 +58,8 @@ size_t	str_format(char *str, t_opt *opt)
 	if (str == NULL)
 	{
 		str = "(null)";
-	//	if (opt->prec != -1 && opt->prec < (int)ft_strlen(str))
-	//		str = "";
+		//	if (opt->prec != -1 && opt->prec < (int)ft_strlen(str))
+		//		str = "";
 	}
 	if (opt->prec > -1)
 		arg = ft_substr(str, 0, opt->prec);

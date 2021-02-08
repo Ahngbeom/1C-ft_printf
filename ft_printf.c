@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 16:09:29 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 18:47:04 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static	void	set_width_or_prec(va_list ap, t_opt *opt, char ch)
 		{
 			if ((opt->prec = va_arg(ap, int)) < 0)
 				opt->prec = -1;
-			else
-				opt->zero = 0;
+			//else
+			//	opt->zero = 0;
 		}
 	}
 }
@@ -86,12 +86,12 @@ static	int	find_format(char *fmt, va_list ap)
 		else if (fmt[i] == '.')
 			opt->prec = 0;
 		else if (ft_isdigit(fmt[i]) || fmt[i] == '*')
-			set_width_or_prec(ap, opt, fmt[i]);	
+			set_width_or_prec(ap, opt, fmt[i]);
 		i++;
 	}
-	if (opt->prec >= 0 && opt->zero > 0)
-		opt->zero = 0;
 	opt->type = fmt[i];
+	if (opt->prec >= 0 && opt->zero > 0 && opt->type != '%')
+		opt->zero = 0;
 	print_len = data_type(ap, opt);
 	free(opt);
 	return (print_len);
