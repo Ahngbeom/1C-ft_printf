@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 15:17:21 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 19:01:56 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 19:24:06 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,13 @@ size_t	str_format(char *str, t_opt *opt)
 	size_t	print_len;
 	char	*arg;
 	char	*padding;
+	
+	printf("\n%c", opt->type);
+	printf("\n%ld", opt->minus);
+	printf("\n%ld", opt->zero);
+	printf("\n%d", opt->width);
+	printf("\n%d\n", opt->prec);
+
 
 	if (str == NULL)
 	{
