@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:27:23 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/04 22:51:29 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 15:16:34 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <stdarg.h>
-# include "./libft/libft.h"
+# include "libft/libft.h"
 
 # define DTYPE "csdiupxX%"
 

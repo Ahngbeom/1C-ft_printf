@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 20:50:07 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/05 23:40:57 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 15:22:58 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,15 @@ size_t  pointer_format(long long n, t_opt *opt)
 	size_t  print_len;
 	char    *addr;
 
-	if (n == 0)
-		addr = ft_strdup("(nil)");
+	if (n == 0 && opt->prec == 0)
+		addr = ft_strdup("");
+	else if (n == 0 && opt->prec == -1)
+		//addr = ft_strdup("(nil)");
+		addr = ft_strdup("0");
 	else
 		addr = ft_tobase_n(n, "0123456789abcdef");
 	addr = applies_to_prec(opt->prec, addr);
-	if (n > 0)
+	//if (n > 0)
 		addr = ft_strjoin(ft_strdup("0x"), addr);
 	addr = applies_to_width(opt, ft_strdup(""), addr);
 	print_len = ft_putstr_fd(addr, 1);
