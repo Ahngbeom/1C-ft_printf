@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/08 15:17:21 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 19:01:56 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 19:25:41 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ size_t	str_format(char *str, t_opt *opt)
 		arg = ft_strdup(str);
 	if (opt->width > 0 && (size_t)opt->width > ft_strlen(arg))
 	{
-		padding = set_padding(0, opt->width - ft_strlen(arg));
+		padding = set_padding(opt->zero, opt->width - ft_strlen(arg));
 		arg = set_sorting(opt->minus, arg, padding);
 	}
 	print_len = ft_putstr_fd(arg, 1);
