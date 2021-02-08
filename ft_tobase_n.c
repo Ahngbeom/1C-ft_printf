@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:54:12 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 21:10:54 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 21:57:18 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static	char	*ft_putnbr(long long nbr, char *base,
 	return (result);
 }
 
-char		*ft_tobase_n(long long n, char *base)
+char			*ft_tobase_n(long long n, char *base)
 {
 	char		*result;
 	int	base_count;
