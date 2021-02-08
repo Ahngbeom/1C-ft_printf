@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 18:47:04 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 19:07:56 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ static	int	find_format(char *fmt, va_list ap)
 		i++;
 	}
 	opt->type = fmt[i];
-	if (opt->prec >= 0 && opt->zero > 0 && opt->type != '%')
+	if (opt->prec >= 0 && opt->minus > 0 && opt->type != '%')
 		opt->zero = 0;
 	print_len = data_type(ap, opt);
 	free(opt);
