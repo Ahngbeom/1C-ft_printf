@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 19:21:41 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 19:48:57 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,10 @@ static	int	find_format(char *fmt, va_list ap)
 		if (fmt[i] == '-')
 		{
 			opt->minus = 1;
-			if (opt->zero == 1)
-				opt->zero = 0;
+			//if (opt->zero == 1)
+				//opt->zero = 0;
 		}
-		else if (fmt[i] == '0' && opt->width == 0 && opt->prec == -1)
+		else if (fmt[i] == '0' && opt->width == 0 && opt->prec == -1 && opt->minus == 0)
 			opt->zero = 1;
 		else if (fmt[i] == '.')
 			opt->prec = 0;
@@ -90,8 +90,8 @@ static	int	find_format(char *fmt, va_list ap)
 		i++;
 	}
 	opt->type = fmt[i];
-	//if ((opt->prec >= 0 || opt->minus > 0) && opt->type != '%')
-	if ((opt->prec >= 0 || opt->minus > 0))
+	if ((opt->prec >= 0 || opt->minus > 0) && opt->type != '%')
+	//if ((opt->prec >= 0 || opt->minus > 0))
 		opt->zero = 0;
 	print_len = data_type(ap, opt);
 	free(opt);
