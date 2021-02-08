@@ -6,7 +6,7 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/05 21:43:35 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 15:53:46 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,11 +56,8 @@ static	void	set_width_or_prec(va_list ap, t_opt *opt, char ch)
 				opt->prec = -1;
 			else
 				opt->zero = 0;
-			
 		}
 	}
-	if (opt->prec > 0 && opt->zero > 0)
-		opt->zero = 0;
 }
 
 static	int	find_format(char *fmt, va_list ap)
@@ -90,6 +87,8 @@ static	int	find_format(char *fmt, va_list ap)
 			set_width_or_prec(ap, opt, fmt[i]);	
 		i++;
 	}
+	if (opt->prec >= 0 && opt->zero > 0)
+		opt->zero = 0;
 	opt->type = fmt[i];
 	print_len = data_type(ap, opt);
 	free(opt);
