@@ -6,13 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 15:21:34 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 21:06:15 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 22:24:18 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int	data_type(va_list ap, t_opt *opt)
+static	int		data_type(va_list ap, t_opt *opt)
 {
 	if (opt->type == 'c')
 		return (char_format(va_arg(ap, int), opt));
@@ -58,29 +58,27 @@ static	void	set_width_or_prec(va_list ap, t_opt *opt, char ch)
 	}
 }
 
-static	int	find_format(char *fmt, va_list ap)
+static	int		find_format(char *fmt, va_list ap)
 {
-	int	print_len;
-	int	i;
+	int		print_len;
 	t_opt	*opt;
 
-	i = 0;
 	if (!(opt = init_opt()))
 		return (-1);
-	while (!ft_strchr(DTYPE, fmt[i]) && fmt[i] != '\0')
+	while (!ft_strchr(DTYPE, *fmt) && *fmt != '\0')
 	{
-		if (fmt[i] == '-')
+		if (*fmt == '-')
 			opt->minus = 1;
-		else if (fmt[i] == '0' &&
-				opt->width == 0 && opt->prec == -1 && opt->minus == 0)
+		else if (*fmt == '0' && opt->width == 0 &&
+				opt->prec == -1 && opt->minus == 0)
 			opt->zero = 1;
-		else if (fmt[i] == '.')
+		else if (*fmt == '.')
 			opt->prec = 0;
-		else if (ft_isdigit(fmt[i]) || fmt[i] == '*')
-			set_width_or_prec(ap, opt, fmt[i]);
-		i++;
+		else if (ft_isdigit(*fmt) || *fmt == '*')
+			set_width_or_prec(ap, opt, *fmt);
+		fmt++;
 	}
-	opt->type = fmt[i];
+	opt->type = *fmt;
 	if ((opt->prec >= 0 || opt->minus > 0) && opt->type != '%')
 		opt->zero = 0;
 	print_len = data_type(ap, opt);
@@ -88,10 +86,10 @@ static	int	find_format(char *fmt, va_list ap)
 	return (print_len);
 }
 
-int		ft_printf(const char *str, ...)
+int				ft_printf(const char *str, ...)
 {
-	int		print_len;
-	int		rtn;
+	int			print_len;
+	int			rtn;
 	va_list		ap;
 
 	rtn = 0;

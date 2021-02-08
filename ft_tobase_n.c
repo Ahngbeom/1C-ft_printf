@@ -6,13 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 17:54:12 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 21:57:18 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 22:03:00 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int	ft_dupl_check(char *str, int length)
+static	int		ft_dupl_check(char *str, int length)
 {
 	int i;
 	int j;
@@ -58,8 +58,8 @@ static	char	*ft_putnbr(long long nbr, char *base,
 
 char			*ft_tobase_n(long long n, char *base)
 {
-	char		*result;
-	int	base_count;
+	char	*result;
+	int		base_count;
 
 	base_count = 0;
 	while (base[base_count] != '\0')

@@ -6,13 +6,13 @@
 /*   By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/19 15:03:47 by bahn              #+#    #+#             */
-/*   Updated: 2021/02/08 21:08:42 by bahn             ###   ########.fr       */
+/*   Updated: 2021/02/08 21:59:48 by bahn             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	int	ft_dupl_check(char *str, int length)
+static	int		ft_dupl_check(char *str, int length)
 {
 	int i;
 	int j;
