@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/02/09 22:00:22 by bahn             ###   ########.fr        #
+#    Updated: 2021/02/09 22:06:31 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,16 @@ RM		= rm -rf
 
 LIB_DIR		= ./libft
 
-SRC_DIR		= ./
-SRC_FILES	= ft_printf.c \
-		  ft_printf_utils.c \
+SRC_DIR		= ./src/
+SRC_FILES	= ft_printf_utils.c \
 		  ft_int_format.c \
 		  ft_char_format.c \
 		  ft_tobase_n.c \
 		  ft_putnbr_base.c \
 		  ft_putnbr_unsigned.c \
 		  ft_strchr_set.c			
-SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
+SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES)) \
+		  ./ft_printf.c
 
 OBJ_DIR		= ./
 OBJS		= $(SRCS:.c=.o)
