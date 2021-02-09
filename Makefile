@@ -6,14 +6,14 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/02/09 21:12:44 by bahn             ###   ########.fr        #
+#    Updated: 2021/02/09 22:00:22 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
 CC		= gcc
 CFLAGS		= -Wall -Wextra -Werror -g
-INCFLAGS	= -I.
+INCFLAGS	= -I./includes
 
 AR		= ar crs
 
@@ -29,7 +29,7 @@ SRC_FILES	= ft_printf.c \
 		  ft_tobase_n.c \
 		  ft_putnbr_base.c \
 		  ft_putnbr_unsigned.c \
-		  ft_strchr_set.c \			
+		  ft_strchr_set.c			
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 OBJ_DIR		= ./
