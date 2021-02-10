@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/02/09 22:06:31 by bahn             ###   ########.fr        #
+#    Updated: 2021/02/10 13:57:36 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ RM		= rm -rf
 
 LIB_DIR		= ./libft
 
-SRC_DIR		= ./src/
+SRC_DIR		= ./srcs/
 SRC_FILES	= ft_printf_utils.c \
 		  ft_int_format.c \
 		  ft_char_format.c \
