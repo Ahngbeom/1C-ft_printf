@@ -6,31 +6,29 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/02/10 13:57:36 by bahn             ###   ########.fr        #
+#    Updated: 2021/02/12 20:21:40 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		= libftprintf.a
-CC		= gcc
+CC			= gcc
 CFLAGS		= -Wall -Wextra -Werror -g
 INCFLAGS	= -I./includes
 
-AR		= ar crs
+AR			= ar crs
 
-RM		= rm -rf
+RM			= rm -rf
 
 LIB_DIR		= ./libft
 
 SRC_DIR		= ./srcs/
 SRC_FILES	= ft_printf_utils.c \
-		  ft_int_format.c \
-		  ft_char_format.c \
-		  ft_tobase_n.c \
-		  ft_putnbr_base.c \
-		  ft_putnbr_unsigned.c \
-		  ft_strchr_set.c			
+			  ft_int_format.c \
+			  ft_char_format.c \
+			  ft_tobase_n.c \
+			  ft_strchr_set.c			
 SRCS		= $(addprefix $(SRC_DIR), $(SRC_FILES)) \
-		  ./ft_printf.c
+			  ./ft_printf.c
 
 OBJ_DIR		= ./
 OBJS		= $(SRCS:.c=.o)
@@ -54,7 +52,7 @@ fclean		:
 	$(RM) $(OBJS)
 	$(RM) $(NAME)
 
-re		:
+re			:
 	fclean all
 
 .PHONY		: all clean fclean re
