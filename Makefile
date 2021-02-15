@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/02/15 16:10:57 by bahn             ###   ########.fr        #
+#    Updated: 2021/02/15 16:16:05 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ OBJS		= $(SRCS:.c=.o)
 
 $(NAME) 	: $(OBJS)
 	$(MAKE) all -C $(LIB_DIR)
+	$(MAKE) bonus -C $(LIB_DIR)
 	cp $(LIB_DIR)/libft.a $@
 	$(AR) $@ $^
 
