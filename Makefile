@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/02/12 20:21:40 by bahn             ###   ########.fr        #
+#    Updated: 2021/02/15 16:10:57 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ OBJS		= $(SRCS:.c=.o)
 
 $(NAME) 	: $(OBJS)
 	$(MAKE) all -C $(LIB_DIR)
-	$(MAKE) -C $(LIB_DIR) bonus
 	cp $(LIB_DIR)/libft.a $@
 	$(AR) $@ $^
 
@@ -52,7 +51,6 @@ fclean		:
 	$(RM) $(OBJS)
 	$(RM) $(NAME)
 
-re			:
-	fclean all
+re		: fclean all
 
 .PHONY		: all clean fclean re
