@@ -6,7 +6,7 @@
 #    By: bahn <bahn@student.42seoul.kr>             +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/01/18 15:26:43 by bahn              #+#    #+#              #
-#    Updated: 2021/02/15 16:16:05 by bahn             ###   ########.fr        #
+#    Updated: 2021/02/16 13:05:53 by bahn             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ $(NAME) 	: $(OBJS)
 	cp $(LIB_DIR)/libft.a $@
 	$(AR) $@ $^
 
-all		: $(NAME)
+all			: $(NAME)
 
 clean		:
 	$(MAKE) -C $(LIB_DIR) clean
@@ -52,6 +52,6 @@ fclean		:
 	$(RM) $(OBJS)
 	$(RM) $(NAME)
 
-re		: fclean all
+re			: fclean all
 
 .PHONY		: all clean fclean re
